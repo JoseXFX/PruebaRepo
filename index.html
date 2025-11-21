@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prueba App</title>
+  <style>
+    /* Layout base: no scroll global */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* evita scroll global */
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* Contenedor principal en columna */
+    .page {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* Header: única cifra exacta (120px) */
+    header.app-header {
+      height: 120px;      /* altura exacta solicitada */
+      width: 100%;
+      background: #000;   /* negro */
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center; /* centra el título horizontal y verticalmente */
+      box-sizing: border-box;
+    }
+
+    header.app-header h1 {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    /* Área debajo del header: ocupa el resto de la vista */
+    .below-header {
+      flex: 1;
+      display: flex;   /* sidebar + main */
+      min-height: 0;   /* necesario para permitir scroll interno en main */
+    }
+
+    /* Sidebar: única cifra exacta (240px) */
+    nav.sidebar {
+      width: 240px;         /* ancho fijo solicitado */
+      background: #012a4a;  /* azul oscuro */
+      color: #fff;
+      box-sizing: border-box;
+      overflow: auto;       /* si el contenido excede, scrollea solo aquí */
+    }
+
+    /* Panel principal: ocupa el resto, único con scroll */
+    main.panel {
+      flex: 1;
+      background: #cfeffd;  /* azul clarito */
+      box-sizing: border-box;
+      overflow: auto;       /* scroll solo en este panel */
+      -webkit-overflow-scrolling: touch;
+      min-height: 0;
+    }
+
+    /* estilos mínimos de contenido sin usar tamaños fijos */
+    .menu-list, .content-list {
+      margin: 0;
+      padding-inline-start: 1em;
+    }
+
+    .menu-title {
+      font-weight: 600;
+      padding-block: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="app-header" role="banner">
+      <h1>Prueba App</h1>
+    </header>
+
+    <div class="below-header" role="group" aria-label="Contenido principal">
+      <nav class="sidebar" role="navigation" aria-label="Panel lateral">
+        <div class="menu-title">Menú</div>
+        <ul class="menu-list" role="menu" aria-label="Opciones del menú">
+          <li role="menuitem">Opción 1</li>
+          <li role="menuitem">Opción 2</li>
+          <li role="menuitem">Opción 3</li>
+          <li role="menuitem">Opción 4</li>
+          <li role="menuitem">Opción 5</li>
+        </ul>
+      </nav>
+
+      <main class="panel" role="main" aria-label="Panel de opciones">
+        <h2>Panel de opciones</h2>
+        <p>Este panel ocupa el espacio restante y es el único que puede desplazarse si su contenido supera la altura disponible.</p>
+
+        <!-- Contenido de ejemplo para demostrar scroll en este panel -->
+        <ul class="content-list">
+          <li>Elemento A</li>
+          <li>Elemento B</li>
+          <li>Elemento C</li>
+          <li>Elemento D</li>
+          <li>Elemento E</li>
+          <li>Elemento F</li>
+          <li>Elemento G</li>
+          <li>Elemento H</li>
+          <li>Elemento I</li>
+          <li>Elemento J</li>
+          <li>Elemento K</li>
+          <li>Elemento L</li>
+          <li>Elemento M</li>
+          <li>Elemento N</li>
+          <li>Elemento O</li>
+          <li>Elemento P</li>
+        </ul>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
